@@ -1,0 +1,74 @@
+.album-card{
+    /* background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%); */
+    background: white;
+    margin: 8px;
+    border-radius: 4px;
+    padding: 12px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+    display: flex;
+    position: relative;
+}
+
+.album-card:hover{
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+    transform: translateY(-5px);
+    cursor: pointer;
+}
+
+.album-card:hover img{
+    opacity: 1;
+}
+
+.album-card img{
+    height: 150px;
+    min-width: 150px;
+    border-radius: 4px;
+    opacity: 0.9;
+    transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+}
+
+
+
+.album-card-info{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center !important;
+}
+.album-card-info h4{
+    max-width: 90%;
+}
+.album-card-info small{
+    font-size: 0.8em;
+    opacity: 0.8;
+}
+
+.album-name{
+
+}
+
+.artist-name, .album-name{
+    line-height: 1.2em;
+    max-height: 2.4em;
+    overflow: hidden;
+}
+
+
+.album-price{
+    color: #333333;
+    opacity: 0.7;
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8em;
+}
+.album-price i{
+    font-size: 0.9em;
+    margin-right: 1px;
+}

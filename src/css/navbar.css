@@ -1,0 +1,76 @@
+.navbar{
+    background: rgb(237, 240, 244);
+    background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
+    background-image: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    background-image: linear-gradient(to top, #e6e9f0 0%, #eef1f5 100%);
+    background: white;
+    display: flex;
+    height: 70px;
+    align-items: center;
+    padding: 12px 24px;
+    position: sticky;
+    top: 0;
+    z-index: 2;
+    box-shadow: 0px 1px 10px #999;
+}
+
+.navbar h2{
+    font-weight: 200;
+    font-size: 1.2em;
+    opacity: 0.8;
+}
+
+.navbar img{
+    height: 32px;
+    margin-right: 12px;
+}
+
+.searchbar{
+    margin-left: auto;
+    padding: 6px;
+    font-size: 1em;
+    position: relative;
+}
+.searchbar::after{
+    content: '';
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    height: 1px;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.24);
+    transition: all 0.15s ease-in-out;
+    transform: scale(0, 1);
+    transform-origin: left;
+}
+
+.searchbar:focus-within::after{
+    transform: scale(1);
+}
+
+.searchbar input{
+    background: transparent;
+    border: none;
+    padding: 6px;
+    font-size: 1em;
+    font-weight: 200;
+    padding-right: 32px;
+}
+
+.searchbar i{
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #333333;
+    opacity: 0.7;
+}
+
+.searchbar i:hover{
+    cursor: pointer;
+    opacity: 1;
+}
