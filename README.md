@@ -1,1 +1,1 @@
-SharpSpring React Project!
+SharpSpring React Project! Search different albums, click on them to open modal for more info, load more for the same search and sort them by price or date. Mobile friendly!

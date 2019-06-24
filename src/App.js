@@ -59,7 +59,7 @@ export default class App extends Component {
         loadingMoreData: !loadingMore ? false : true
         }, 
         () => {
-      // Execute fetch on setState callback
+      // Execute fetch on setState callback // Added proxy to avoid CORS issues
       let url = `https://itunes.apple.com/search?term=${query}&callback=wsSearchCB&media=music&entity=album&limit=${this.state.limit}`
       let proxyurl = `https://cors-anywhere.herokuapp.com/`
       fetch(proxyurl + url)
