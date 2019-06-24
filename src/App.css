@@ -190,3 +190,23 @@
         transform: scale(1)
     }
 }
+
+
+
+
+
+
+
+
+/* Media queries */
+
+@media screen and (max-width: 600px){
+    .results-text{
+        flex-direction: column;
+        justify-content: center;
+    }
+    .results-text .sortby{
+        margin-left: 0px;
+        margin-top: 12px;
+    }
+}

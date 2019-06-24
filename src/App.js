@@ -28,23 +28,18 @@ export default class App extends Component {
   }
 
   sortData(method){
-    console.log(method)
     this.setState({ sortMethod: method })
     if(method === 'price-lth'){
       this.setState({ data: this.state.data.sort((a, b) => a.collectionPrice - b.collectionPrice) })
-      console.log('called')
     }
     if(method === 'price-htl'){
       this.setState({ data: this.state.data.sort((a, b) => b.collectionPrice - a.collectionPrice) })
-      console.log('called')
     }
     if(method === 'date-nto'){
       this.setState({ data: this.state.data.sort((a, b) => Date.parse(b.releaseDate) - Date.parse(a.releaseDate)) })
-      console.log('called')
     }
     if(method === 'date-otn'){
       this.setState({ data: this.state.data.sort((a, b) => Date.parse(a.releaseDate) - Date.parse(b.releaseDate)) })
-      console.log('called')
     }
   }
 
@@ -60,10 +55,11 @@ export default class App extends Component {
         query, 
         data: loadingMore ? this.state.data : null ,
         sortMethod: '',
-        limit: loadingMore ? this.state.limit : 25 
+        limit: loadingMore ? this.state.limit : 25,
+        loadingMoreData: !loadingMore ? true : false
         }, 
         () => {
-      // Execute fetch on setState callback to refresh new limit to 25 when making a new search
+      // Execute fetch on setState callback
       fetch(`https://itunes.apple.com/search?term=${query}&callback=wsSearchCB&media=music&entity=album&limit=${this.state.limit}`)
       .then(d => d.text())
       .then(res => {
@@ -74,7 +70,7 @@ export default class App extends Component {
 
       })
       .catch(err => {
-        console.log(err)
+        console.log('Error: ',err)
         this.setState({ error: true })
       })
 
@@ -94,18 +90,18 @@ export default class App extends Component {
         <Navbar newSearch={query => this.getData(query)} query={this.state.query} />
 
         {data && data.length > 0 ? 
-        <h3 className="results-text" >
-          Showing {data.length} results for&nbsp;<strong>{this.state.query}</strong>
-          <div className="sortby" >
-            Sort by <select value={this.state.sortMethod} onChange={e => this.sortData(e.target.value)} >
-                      <option value="" disabled defaultValue >Choose option</option>
-                      <option value="price-htl" >Price (High to low)</option>
-                      <option value="price-lth" >Price (Low to high)</option>
-                      <option value="date-nto" >Date (New to old)</option>
-                      <option value="date-otn" >Date (Old to new)</option>
-                    </select>
-          </div>
-        </h3>
+          <h3 className="results-text" >
+            Showing {data.length} results for&nbsp;<strong>{this.state.query}</strong>
+            <div className="sortby" >
+              Sort by <select value={this.state.sortMethod} onChange={e => this.sortData(e.target.value)} >
+                        <option value="" disabled defaultValue >Choose option</option>
+                        <option value="price-htl" >Price (High to low)</option>
+                        <option value="price-lth" >Price (Low to high)</option>
+                        <option value="date-nto" >Date (New to old)</option>
+                        <option value="date-otn" >Date (Old to new)</option>
+                      </select>
+            </div>
+          </h3>
          : data && data.length === 0 ? 
           <div className="no-results" >
             No results for '{this.state.query}'

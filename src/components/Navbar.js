@@ -20,7 +20,6 @@ export default class Navbar extends Component {
 
     handleSearch(key){
         if(this.state.search.length > 0){
-            console.log('Se llama')
             if(!key){
                 this.props.newSearch(this.state.search)
             } else if(key.key === 'Enter'){
@@ -41,7 +40,7 @@ export default class Navbar extends Component {
                         onChange={e => this.handleChange(e)} 
                         type="text" 
                         placeholder="Search albums..."
-                        maxlength="50"
+                        maxLength="50"
                     />
 
                     <i onClick={() => this.handleSearch()} className="fas fa-search" ></i>
