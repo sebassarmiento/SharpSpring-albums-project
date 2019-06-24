@@ -10,7 +10,7 @@ export default class App extends Component {
     super(props)
     this.state = {
       data: null,
-      query: 'soad',
+      query: 'rhcp',
       sortMethod: '',
       modal: null,
       limit: 25,
