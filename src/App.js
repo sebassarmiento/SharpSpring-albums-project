@@ -56,11 +56,13 @@ export default class App extends Component {
         data: loadingMore ? this.state.data : null ,
         sortMethod: '',
         limit: loadingMore ? this.state.limit : 25,
-        loadingMoreData: !loadingMore ? true : false
+        loadingMoreData: !loadingMore ? false : true
         }, 
         () => {
       // Execute fetch on setState callback
-      fetch(`https://itunes.apple.com/search?term=${query}&callback=wsSearchCB&media=music&entity=album&limit=${this.state.limit}`)
+      let url = `https://itunes.apple.com/search?term=${query}&callback=wsSearchCB&media=music&entity=album&limit=${this.state.limit}`
+      let proxyurl = `https://cors-anywhere.herokuapp.com/`
+      fetch(proxyurl + url)
       .then(d => d.text())
       .then(res => {
 
